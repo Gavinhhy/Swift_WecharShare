@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -32,7 +33,80 @@
                     <view key="view" contentMode="scaleToFill" id="fmc-OC-SeR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zly-rh-sgz">
+                                <rect key="frame" x="56" y="77" width="208" height="29"/>
+                                <segments>
+                                    <segment title="会话"/>
+                                    <segment title="朋友圈"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeScene:" destination="0Yd-eu-wUo" eventType="valueChanged" id="bUD-7v-p3F"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zR-Jk-vJl">
+                                <rect key="frame" x="49" y="138" width="60" height="30"/>
+                                <state key="normal" title="发送文字"/>
+                                <connections>
+                                    <action selector="sendTextContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="rfF-6u-YcW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUe-nS-Nle">
+                                <rect key="frame" x="204" y="138" width="60" height="30"/>
+                                <state key="normal" title="发送图片"/>
+                                <connections>
+                                    <action selector="sendImageContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="VCA-w4-4xW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vp-EI-QWL">
+                                <rect key="frame" x="49" y="195" width="60" height="30"/>
+                                <state key="normal" title="发送链接"/>
+                                <connections>
+                                    <action selector="sendLinkContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="r91-Ny-A0O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9C-p1-1Rb">
+                                <rect key="frame" x="204" y="195" width="60" height="30"/>
+                                <state key="normal" title="发送音乐"/>
+                                <connections>
+                                    <action selector="sendMusicContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="7KT-yE-EQL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrG-kD-Nah">
+                                <rect key="frame" x="49" y="260" width="60" height="30"/>
+                                <state key="normal" title="发送视频"/>
+                                <connections>
+                                    <action selector="sendViewContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="8G9-B1-2yF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gm-eH-bU7">
+                                <rect key="frame" x="188" y="260" width="93" height="30"/>
+                                <state key="normal" title="发送非gif表情"/>
+                                <connections>
+                                    <action selector="sendNonGifContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="PLD-oC-pJq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tr8-gV-3EK">
+                                <rect key="frame" x="40" y="334" width="78" height="30"/>
+                                <state key="normal" title="发送gif表情"/>
+                                <connections>
+                                    <action selector="sendGifContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="iJe-ed-CPX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev0-fn-bcb">
+                                <rect key="frame" x="204" y="329" width="60" height="30"/>
+                                <state key="normal" title="发送文件"/>
+                                <connections>
+                                    <action selector="sendFileContent:" destination="0Yd-eu-wUo" eventType="touchUpInside" id="yml-Tx-gMM"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zly-rh-sgz" secondAttribute="trailing" constant="40" id="EeJ-hH-a7y"/>
+                            <constraint firstItem="Zly-rh-sgz" firstAttribute="top" secondItem="cDX-NX-GXF" secondAttribute="bottom" constant="13" id="S2l-4d-fZ1"/>
+                            <constraint firstItem="Zly-rh-sgz" firstAttribute="leading" secondItem="fmc-OC-SeR" secondAttribute="leadingMargin" constant="40" id="Uqv-JF-uhr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="微信分享" id="xbD-ib-KdN"/>
                 </viewController>
