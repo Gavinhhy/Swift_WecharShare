@@ -9,13 +9,14 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        //注册app
+        WXApi.registerApp("wxb7a77cc90ee300f1")
         return true
     }
 
@@ -39,6 +40,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    //
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    
+    //微信分享完毕后的回调（只有使用真实的AppID才能收到响应）
+    func onReq(req: BaseReq!) {
+        //onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面。
+    }
+    
+    func onResp(resp:BaseResp!){
+        //如果第三方程序向微信发送了sendReq的请求，那么onResp会被回调。sendReq请求调用后，会切到微信终端程序界面。
+        if resp.isKindOfClass(SendMessageToWXResp){//确保是对我们分享操作的回调
+            if resp.errCode == WXSuccess.rawValue{//分享成功
+                NSLog("分享成功")
+            }else{//分享失败
+                NSLog("分享失败，错误码：%d,错误描述：%@",resp.errCode,resp.errStr)
+                
+            }
+        }
     }
 
 
